@@ -13,12 +13,12 @@
 
 * we uploaded three split folders ([**`bubcont2_rawdata`**]() & [**`bubcont2_prepro`**]() & [**`bubcont2_analyses`**]()), separately involving raw EEG data, pre-processing and the following analyses. 
 
-***NOTE***: Run **`runmefirst.m`** first to set path. Then run the main scripts with name starting with number. 
+***NOTE***: Run **`runmefirst.m`** first to set path. Then run the main scripts with the name starting with number. 
 
 ---
 
 ## <a name="prepro"></a>**Preprocessing**
-**`bubcont2_prepro.zip`**[(link)]() contains:
+**`bubcont2_prepro`**[(link)]() contains:
 
   - an example of how the EEG data of one participant were pre-processed (i.g. filter, ICA, CSD ).
     - **`1prepro_preica_bubcont2.m`**
@@ -28,7 +28,7 @@
   - **`5make_dat_bubcont2.m`**: to rebuild bubble masks.
   - **`6n170_elec_selection.m`**: to select the electrode showing minimum voltage across self defined time course and electrodes of interest, and to save corresponding details of this electrode. 
   
-the **rest** of raw EEG data were compressed as **`bubcont2_rawdata.zip`**[(link)](). 
+the **rest** of raw EEG data can be found in **`bubcont2_rawdata`**[(link)](). 
 
 
 ## <a name="stats"></a> **Analyses Framework** 
