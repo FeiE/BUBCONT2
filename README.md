@@ -2,16 +2,16 @@
 - [**Preprocessing**](#prepro) 
 
 - [**Analyses Framework**](#stats) 
-   - [N170 Scripts](#n170)
    - [MI Scripts](#mi)
    - [Figures Scripts](#fig)
 
 ---
+
 * In this experiment, the stimulus was presented through a randomly generated Bubble mask with ten Gaussian apertures on each Bubble trial. At the same time behaviour and EEG performance were recorded. 
 
 * This project was analysed using **Matlab 2015b**, **eeglab 13.4.4b**, **LIMO** toolbox. 
 
-* we uploaded three split folders ([**`bubcont2_rawdata`**]() & [**`bubcont2_prepro`**]() & [**`bubcont2`**]()), separately involving raw EEG data, pre-processing and the following analyses. 
+* we uploaded three split folders ([**`bubcont2_rawdata`**]() & [**`bubcont2_prepro`**]() & [**`bubcont2_analyses`**]()), separately involving raw EEG data, pre-processing and the following analyses. 
 
 ***NOTE***: Run **`runmefirst.m`** first to set path. Then run the main scripts with name starting with number. 
 
@@ -20,12 +20,13 @@
 ## <a name="prepro"></a>**Preprocessing**
 **`bubcont2_prepro.zip`**[(link)]() contains:
 
-  - an example of how the EEG data of one participant were pre-processed (i.g. filter, ICA, ... ).
-    - **`1.m`**
-    - **`2.m`**
-    - **`3.m`**
-  - **`4.m`**: to reorganise EEG data to free up storage space.
-  - **`5.m`**: to rebuild bubble masks.
+  - an example of how the EEG data of one participant were pre-processed (i.g. filter, ICA, CSD ).
+    - **`1prepro_preica_bubcont2.m`**
+    - **`2prepro_ica_bubcont2.m`**
+    - **`3prepro_postica_bubcont2.m`**
+  - **`4bubblemasks_rebuild_bubcont2.m`**: to reorganise EEG data to free up storage space.
+  - **`5make_dat_bubcont2.m`**: to rebuild bubble masks.
+  - **`6n170_elec_selection.m`**: to select the electrode showing minimum voltage across self defined time course and electrodes of interest, and to save corresponding details of this electrode. 
   
 the **rest** of raw EEG data were compressed as **`bubcont2_rawdata.zip`**[(link)](). 
 
@@ -33,13 +34,13 @@ the **rest** of raw EEG data were compressed as **`bubcont2_rawdata.zip`**[(link
 ## <a name="stats"></a> **Analyses Framework** 
 ---
 
-To determine the dependence between pixel intensities in bubble masks and responses of interest, we calculated Mutual Informaiton（MI） using a bin-less approach basded on Gaussian copulas. A [tutorial](http://onlinelibrary.wiley.com/doi/10.1002/hbm.23471/abstract) with [Matlab & Python code](https://github.com/robince/sensorcop) is available in Ince et al. (2016). 
+To determine the dependence between pixel intensities in bubble masks and responses of interest, we calculated Mutual Informaiton（MI）using a bin-less approach basded on Gaussian copulas. A [tutorial](http://onlinelibrary.wiley.com/doi/10.1002/hbm.23471/abstract) with [Matlab & Python code](https://github.com/robince/sensorcop) is available in Ince et al. (2016). 
 
 ---
 
 * The figure below corresponds to *Whole Stimulus Sampling Analyses*.
 
- <img src="https://github.com/FeiE/BUBCONT2/blob/master/MI%20computation.png?raw=true" />
+ <img src="https://github.com/FeiE/BUBCONT2/blob/master/MI%20computation.png?raw=true" width = 450/>
  
 > **Centre frame**: bubble masks take values between 0 and 1, controlling the relative transparency of the mask at each pixel, with 0 being completely opaque and 1 being completely translucent. 
 >     
@@ -56,47 +57,44 @@ To determine the dependence between pixel intensities in bubble masks and respon
 
 ---
 
-### <a name="n170"></a>N170 Scripts
-
-**`6.m`**
-> `.m`
->
-
-**`7.m`**
-> `.m`
->
-
 ### <a name="mi"></a>MI Scripts
 
-**`8gcmi_beh.m`**
+**`7gcmi_beh.m`**
 
 > `gcmi_beh_bubcont2.m`: to compute MI(**PIX**, RT), MI(**EYE**, RT), MI(**PIX**, CORRECT), MI(**EYE**, CORRECT). 
 
-**`10grad_gcmi_erp.m`**
+**`8grad_gcmi_erp.m`**
 > *Whole Stimulus Sampling Analyses*
+>>
+>> `grad_gcmi_pix_erp_LRCelecframe_bubcont2.m`: to compute MI(**PIX**, [ERP, ERP<sub>g</sub>]) at each posterior lateral electrode（<img src="https://github.com/FeiE/BUBCONT2/blob/master/LE.png?raw=true" width = 30/> & <img src="https://github.com/FeiE/BUBCONT2/blob/master/RE.png?raw=true" width = 30/>) and time point.
+>>
+>> `grad_gcmi_pix_erp_Pelecframe_bubcont2.m`: to compute MI(**PIX**, [ERP, ERP<sub>g</sub>]) at each posterior electrode <img src="https://github.com/FeiE/BUBCONT2/blob/master/PL.png?raw=true" width = 30/> and time point.
+>>
+>> `maxmi_perframe_acrPeles.m`: to get the maximum MI(**PIX**, [ERP, ERP<sub>g</sub>]) across posterior electrodes <img src="https://github.com/FeiE/BUBCONT2/blob/master/PL.png?raw=true" width = 30/>. 
 >
-> `grad_gcmi_pix_erp_LRCelecframe_bubcont2.m`:
->> `maxmi_perframe_acrPLeles.m`:
 >
-> `grad_gcmi_pix_erp_PLelecframe_bubcont2.m`: to compute MI(**PIX**, [ERP, ERP<sub>g</sub>]) at each posterior electrode <img src="https://github.com/FeiE/BUBCONT2/blob/master/PL.png?raw=true" width = 30/> and time point
-
-
 > *Eye Mask Analyses*
->
->`grad_gcmi_eye_erp_allelec_bubcont2.m`: to compute MI(**EYE**, [ERP, ERP<sub>g</sub>]) at every electrodes and time points. 
->
-> `grad_gcmi_eye_erp_LRCelec_perm_bubcont2.m`: to compute MI(**EYE**, [ERP, ERP<sub>g</sub>]) at each posterior lateral electrode of interest （<img src="https://github.com/FeiE/BUBCONT2/blob/master/LE.png?raw=true" width = 30/> & <img src="https://github.com/FeiE/BUBCONT2/blob/master/RE.png?raw=true" width = 30/>）and time point. permutation test is applied to find statistical significance. 
-> 
->> 
+>>
+>>`grad_gcmi_eye_erp_allelec_bubcont2.m`: to compute MI(**EYE**, [ERP, ERP<sub>g</sub>]) at every electrodes and time points. 
+>>
 >> `topography.m`: to obtain topographic map of MI(**EYE**, [ERP, ERP<sub>g</sub>]).
 >>
->> `maxmi_perframe_acrLRCeles.m`: to obtain 
+>> `grad_gcmi_eye_erp_LRCelec_perm_bubcont2.m`: to compute MI(**EYE**, [ERP, ERP<sub>g</sub>]) at each posterior lateral electrode of interest（<img src="https://github.com/FeiE/BUBCONT2/blob/master/LE.png?raw=true" width = 30/> & <img src="https://github.com/FeiE/BUBCONT2/blob/master/RE.png?raw=true" width = 30/>）and time point. permutation test is applied to find statistical significance. 
+>>
+>> `maxmi_perframe_acrLRCeles.m`: to get the maximum MI(**EYE**, [ERP, ERP<sub>g</sub>]) across posterior lateral electrode of interest（<img src="https://github.com/FeiE/BUBCONT2/blob/master/LE.png?raw=true" width = 30/> & <img src="https://github.com/FeiE/BUBCONT2/blob/master/RE.png?raw=true" width = 30/>.
 >>
 >> `grad_gcmi_eye_erp_onset_bubcont2.m`: to determine the onset of MI(**EYE**, [ERP, ERP<sub>g</sub>])  
 
 
 ### <a name="fig"></a>Figures Scripts
-**`9gcmi_beh_fig.m`**
+
+**`9n170_measure_fig.m`**
+> `waveform_erpdiff_bubcount2.m`
+> 
+> <img src="https://github.com/FeiE/BUBCONT2/blob/master/waveform_erpdiff_bubcount2.png?raw=true" width = 300/>
+> 
+**`10gcmi_beh_fig.m`**
+>
 > `ClassificationImage.m`
 >>  <img src="https://github.com/FeiE/BUBCONT2/blob/master/ClassificationImage.png?raw=true" width = 100/>
 >
@@ -129,6 +127,6 @@ To determine the dependence between pixel intensities in bubble masks and respon
 > 
 >>  <img src="https://github.com/FeiE/BUBCONT2/blob/master/waveform_diff_bubcont2_onset.png?raw=true" width = 400/>
 >
-> `togography.m`
+> `topography_fig.m`
 > 
 >>  <img src="https://github.com/FeiE/BUBCONT2/blob/master/togography.png?raw=true" width = 100/>
