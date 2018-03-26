@@ -44,7 +44,7 @@ To determine the dependence between pixel intensities in bubble masks and respon
  
 > **Centre frame**: bubble masks take values between 0 and 1, controlling the relative transparency of the mask at each pixel, with 0 being completely opaque and 1 being completely translucent. 
 >     
->> **Blue frame**: we can compute MI between two vectors: the distribution of behaviour performance (RT/Correct) and intensity distribution of the pixel marked in red. To obtain classification image that can reveal what information of the image is associated with responses of interest, we repeat MI calculation per each pixel within the face oval, hereafter MI(PIX, RT), MI(PIX, CORRECT). 
+>> **Blue frame**: we can compute MI between two vectors: the distribution of behaviour performance (RT/Correct) and intensity distribution of a pixel, for example, the one marked in red. To obtain classification image that can reveal what information of the image is associated with responses of interest, we repeat MI calculation per each pixel within the face oval, hereafter MI(PIX, RT), MI(PIX, CORRECT). 
 >> 
 >>> **Orange frame**: similarly, to quantify the dependence between each pixel’s intensity from Bubble mask and bivariate responses, we compute MI(PIX, [ERP, ERP<sub>g</sub>]) at each electrode and time point, resulting in one 4D matrix (pixels x pixels x electrodes x time points).
 
@@ -81,9 +81,9 @@ To determine the dependence between pixel intensities in bubble masks and respon
 >>
 >> `grad_gcmi_eye_erp_LRCelec_perm_bubcont2.m`: to compute MI(**EYE**, [ERP, ERP<sub>g</sub>]) at each posterior lateral electrode of interest（<img src="https://github.com/FeiE/BUBCONT2/blob/master/LE.png?raw=true" width = 30/> & <img src="https://github.com/FeiE/BUBCONT2/blob/master/RE.png?raw=true" width = 30/>）and time point. permutation test is applied to find statistical significance. 
 >>
->> `maxmi_perframe_acrLRCeles.m`: to get the maximum MI(**EYE**, [ERP, ERP<sub>g</sub>]) across posterior lateral electrode of interest（<img src="https://github.com/FeiE/BUBCONT2/blob/master/LE.png?raw=true" width = 30/> & <img src="https://github.com/FeiE/BUBCONT2/blob/master/RE.png?raw=true" width = 30/>.
+>> `maxmi_perframe_acrLRCeles.m`: to get the maximum MI(**EYE**, [ERP, ERP<sub>g</sub>]) across posterior lateral electrode of interest（<img src="https://github.com/FeiE/BUBCONT2/blob/master/LE.png?raw=true" width = 30/> & <img src="https://github.com/FeiE/BUBCONT2/blob/master/RE.png?raw=true" width = 30/>).
 >>
->> `grad_gcmi_eye_erp_onset_bubcont2.m`: to determine the onset of MI(**EYE**, [ERP, ERP<sub>g</sub>])  
+>> `grad_gcmi_eye_erp_onset_bubcont2.m`: to determine the onset of MI(**EYE**, [ERP, ERP<sub>g</sub>]) from posterior lateral electrodes （<img src="https://github.com/FeiE/BUBCONT2/blob/master/LE.png?raw=true" width = 30/> & <img src="https://github.com/FeiE/BUBCONT2/blob/master/RE.png?raw=true" width = 30/>).
 
 
 ### <a name="fig"></a>Figures Scripts
