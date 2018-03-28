@@ -40,7 +40,7 @@ To determine the dependence between pixel intensities in bubble masks and respon
 
 * The figure below corresponds to *Whole Stimulus Sampling Analyses*.
 
- <img src="https://github.com/FeiE/BUBCONT2/blob/master/MI%20computation.png?raw=true" width = 450/>
+ <img src="https://github.com/FeiE/BUBCONT2/blob/master/MI%20computation.png?raw=true" width = 600/>
  
 > **Centre frame**: bubble masks take values between 0 and 1, controlling the relative transparency of the mask at each pixel, with 0 being completely opaque and 1 being completely translucent. 
 >     
@@ -77,7 +77,7 @@ To determine the dependence between pixel intensities in bubble masks and respon
 >>
 >>`grad_gcmi_eye_erp_allelec_bubcont2.m`: to compute MI(**EYE**, [ERP, ERP<sub>g</sub>]) at every electrodes and time points. 
 >>
->> `topography.m`: to obtain topographic map of MI(**EYE**, [ERP, ERP<sub>g</sub>]).
+>> `topography.m`: to obtain the maximum MI(**EYE**, [ERP, ERP<sub>g</sub>]) across time points.
 >>
 >> `grad_gcmi_eye_erp_LRCelec_perm_bubcont2.m`: to compute MI(**EYE**, [ERP, ERP<sub>g</sub>]) at each posterior lateral electrode of interest（<img src="https://github.com/FeiE/BUBCONT2/blob/master/LE.png?raw=true" width = 30/> & <img src="https://github.com/FeiE/BUBCONT2/blob/master/RE.png?raw=true" width = 30/>）and time point. permutation test is applied to find statistical significance. 
 >>
